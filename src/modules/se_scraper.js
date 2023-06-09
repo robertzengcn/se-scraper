@@ -396,8 +396,31 @@ module.exports = class Scraper {
      * @param keyword
      * @returns {Promise<void>}
      */
-    async search_keyword(keyword) {
+    async search_keyword({page, data, worker}) {
+        debug('worker=%o', worker, this.config.keywords);
 
+        if (page) {
+            this.page = page;
+        }
+
+        await this.page.setViewport({ width: 1920, height: 1040 });
+        let do_continue = true;
+
+        if (this.config.scrape_from_file.length <= 0) {
+            do_continue = await this.load_search_engine();
+        }
+
+        if (!do_continue) {
+            console.error('Failed to load the search engine: load_search_engine()');
+        } else {
+            await this.scraping_loop();
+        }
+
+        return {
+            results: this.results,
+            metadata: this.metadata,
+            num_requests: this.num_requests,
+        }
     }
 
     /**

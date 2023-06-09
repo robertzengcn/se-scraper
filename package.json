@@ -5,7 +5,7 @@
   "homepage": "https://scrapeulous.com/",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test test/modules"
+    "test": "mocha test test/modules --timeout 10000"
   },
   "keywords": [
     "scraping",

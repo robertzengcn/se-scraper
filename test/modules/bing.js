@@ -82,6 +82,7 @@ describe('Module Bing', function(){
 
     it('one keyword one page', function(){
         const bingScraper = new BingScraper({
+            
             config: {
                 search_engine_name: 'bing',
                 throw_on_detection: true,
