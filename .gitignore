@@ -4,6 +4,7 @@ test/static_tests/html/
 test/static_tests/html/*
 
 .idea
+.history
 
 # ignore data
 
